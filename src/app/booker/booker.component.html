@@ -1,0 +1,40 @@
+<form #ngForm="ngForm">
+  <div
+    class="container"
+    fxLayout="row"
+    fxLayoutGap="1em"
+    *ngIf="tripControlInstance$ | async; let trip"
+  >
+    <div fxLayout="column" fxLayoutGap="1em" fxFlex="">
+      <app-booker-one-way
+        *ngIf="trip | guardType: isOneWayTrip as trip"
+        [value]="trip"
+        [showValidationErrors]="ngForm.submitted"
+        (valueChanges)="this.logChanges($event)"
+      >
+      </app-booker-one-way>
+
+      <app-booker-return
+        *ngIf="trip | guardType: isReturnTrip as trip"
+        [value]="trip"
+        [showValidationErrors]="ngForm.submitted"
+        (valueChanges)="this.logChanges($event)"
+      ></app-booker-return>
+
+      <app-booker-multi-city
+        *ngIf="trip | guardType: isMultiCityTrip as trip"
+        [value]="trip"
+        [showValidationErrors]="ngForm.submitted"
+        (valueChanges)="this.logChanges($event)"
+      ></app-booker-multi-city>
+
+      <div>
+        <button type="submit">Search Flights</button>
+      </div>
+    </div>
+
+    <div fxFlex>
+      <pre>{{ trip$ | async | json }}</pre>
+    </div>
+  </div>
+</form>

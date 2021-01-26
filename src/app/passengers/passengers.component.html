@@ -1,0 +1,14 @@
+<div class="flight" [formGroup]="formGroup" fxLayout="row" fxLayoutGap="1em">
+  <div *ngIf="formGroup | getFormControl: 'adults' as adults">
+    <input type="number" min="0" max="7" [formControl]="adults" />
+    <span *ngIf="showValidationErrors && !adults.valid">*</span>
+  </div>
+  <div *ngIf="formGroup | getFormControl: 'children' as children">
+    <input type="number" min="0" max="7" [formControl]="children" />
+    <span *ngIf="showValidationErrors && !children.valid">*</span>
+  </div>
+  <div *ngIf="formGroup | getFormControl: 'infants' as infants">
+    <input type="number" min="0" max="7" [formControl]="infants" />
+    <span *ngIf="showValidationErrors && !infants.valid">*</span>
+  </div>
+</div>

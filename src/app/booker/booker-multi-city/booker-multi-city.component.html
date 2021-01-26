@@ -1,0 +1,62 @@
+<form [formGroup]="form">
+  <div class="booker" fxFlex fxLayout="column" fxLayoutGap="1em">
+    <div *ngIf="form | getFormControl: 'tripType' as flightType">
+      <label>
+        <input
+          type="radio"
+          [value]="TripType.oneWay"
+          [formControl]="flightType"
+        />
+        <span>One Way</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          [value]="TripType.return"
+          [formControl]="flightType"
+        />
+        <span>Return</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          [value]="TripType.multiCity"
+          [formControl]="flightType"
+        />
+        <span>Multi City</span>
+      </label>
+      <span *ngIf="!flightType.valid">*</span>
+    </div>
+
+    <div *ngIf="form | getFormControl: 'usePoints' as usePoints">
+      <label>
+        <input type="checkbox" [formControl]="usePoints" />
+        <span>Use True Blue Points</span>
+      </label>
+    </div>
+
+    <div *ngIf="form | getFormControl: 'promoCode' as promoCode">
+      <label>
+        <span>Promo Code </span>
+        <input formControlName="promoCode" />
+      </label>
+      <span *ngIf="showValidationErrors && !promoCode.valid">*</span>
+    </div>
+
+    <div *ngIf="form | getFormControl: 'passengers' as passengers">
+      <app-passengers
+        [showValidationErrors]="showValidationErrors"
+        [formControl]="passengers"
+      ></app-passengers>
+    </div>
+
+    <div *ngIf="form | getFormControl: 'flights' as flights">
+      <app-flight-list
+        [formControl]="flights"
+        [showValidationErrors]="showValidationErrors"
+      ></app-flight-list>
+
+      <span *ngIf="showValidationErrors && !flights.valid">*</span>
+    </div>
+  </div>
+</form>

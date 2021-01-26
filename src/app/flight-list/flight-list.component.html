@@ -1,0 +1,22 @@
+<form
+  class="flight-list"
+  fxLayout="column"
+  fxLayoutGap="1em"
+  [formGroup]="formArray"
+>
+  <div
+    *ngFor="let xyz of formArray.controls; index as i"
+    fxLayout="row"
+    fxLayoutGap="1em"
+  >
+    <app-flight
+      [showValidationErrors]="showValidationErrors"
+      [formControl]="xyz"
+    ></app-flight>
+    <div><button (click)="remove(i)">x</button></div>
+  </div>
+
+  <div>
+    <button (click)="addFlight()">Add Flight</button>
+  </div>
+</form>

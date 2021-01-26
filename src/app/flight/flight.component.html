@@ -1,0 +1,13 @@
+<div class="flight" [formGroup]="formGroup" fxLayout="row" fxLayoutGap="1em">
+  <div *ngIf="formGroup | getFormControl: 'cities' as cities">
+    <app-city-pair
+      [formControl]="cities"
+      [showValidationErrors]="showValidationErrors"
+    ></app-city-pair>
+    <span *ngIf="showValidationErrors && !cities.valid">*</span>
+  </div>
+  <div *ngIf="formGroup | getFormControl: 'departureDate' as departureDate">
+    <input type="date" [formControl]="departureDate" />
+    <span *ngIf="showValidationErrors && !departureDate.valid">*</span>
+  </div>
+</div>
