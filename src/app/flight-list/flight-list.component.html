@@ -5,13 +5,13 @@
   [formGroup]="formArray"
 >
   <div
-    *ngFor="let xyz of formArray.controls; index as i"
+    *ngFor="let flight of formArray.controls; index as i"
     fxLayout="row"
     fxLayoutGap="1em"
   >
     <app-flight
       [showValidationErrors]="showValidationErrors"
-      [formControl]="xyz"
+      [formControl]="flight"
     ></app-flight>
     <div><button (click)="remove(i)">x</button></div>
   </div>
