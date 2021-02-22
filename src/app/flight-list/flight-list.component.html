@@ -4,11 +4,13 @@
   fxLayoutGap="1em"
   [formGroup]="formArray"
 >
+  <div>Flights</div>
   <div
     *ngFor="let flight of formArray.controls; index as i"
     fxLayout="row"
     fxLayoutGap="1em"
   >
+    <span>{{ i + 1 }}</span>
     <app-flight
       [showValidationErrors]="showValidationErrors"
       [formControl]="flight"
