@@ -4,12 +4,16 @@
   fxLayout="row"
   fxLayoutGap="1em"
 >
-  <div *ngIf="formGroup | getFormControl: 'origin' as origin">
-    <input class="airport" [formControl]="origin" />
-    <span *ngIf="showValidationErrors && !origin.valid">*</span>
+  <div>
+    <input class="airport" [formControl]="formGroup.controls.origin" />
+    <span *ngIf="showValidationErrors && !formGroup.controls.origin.valid"
+      >*</span
+    >
   </div>
-  <div *ngIf="formGroup | getFormControl: 'destination' as destination">
-    <input class="airport" [formControl]="destination" />
-    <span *ngIf="showValidationErrors && !destination.valid">*</span>
+  <div>
+    <input class="airport" [formControl]="formGroup.controls.destination" />
+    <span *ngIf="showValidationErrors && !formGroup.controls.destination.valid"
+      >*</span
+    >
   </div>
 </form>

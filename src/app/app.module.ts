@@ -7,7 +7,6 @@ import { FlexModule } from '@angular/flex-layout';
 import { FlightComponent } from './flight/flight.component';
 import { FlightListComponent } from './flight-list/flight-list.component';
 import { NgxStronglyTypedFormsModule } from 'ngx-strongly-typed-forms';
-import { GetFormControlPipe } from './pipes/get-form-control.pipe';
 import { CityPairComponent } from './city-pair/city-pair.component';
 import { PassengersComponent } from './passengers/passengers.component';
 import { BookerComponent } from './booker/booker.component';
@@ -21,7 +20,6 @@ import { GuardTypePipe } from './pipes/guard-type.pipe';
     AppComponent,
     FlightComponent,
     FlightListComponent,
-    GetFormControlPipe,
     CityPairComponent,
     PassengersComponent,
     BookerComponent,

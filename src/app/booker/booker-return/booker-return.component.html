@@ -1,11 +1,11 @@
 <form [formGroup]="form">
   <div class="booker" fxFlex fxLayout="column" fxLayoutGap="1em">
-    <div *ngIf="form | getFormControl: 'tripType' as flightType">
+    <div>
       <label>
         <input
           type="radio"
           [value]="TripType.oneWay"
-          [formControl]="flightType"
+          [formControl]="form.controls.tripType"
         />
         <span>One Way</span>
       </label>
@@ -13,7 +13,7 @@
         <input
           type="radio"
           [value]="TripType.return"
-          [formControl]="flightType"
+          [formControl]="form.controls.tripType"
         />
         <span>Return</span>
       </label>
@@ -21,46 +21,48 @@
         <input
           type="radio"
           [value]="TripType.multiCity"
-          [formControl]="flightType"
+          [formControl]="form.controls.tripType"
         />
         <span>Multi City</span>
       </label>
-      <span *ngIf="!flightType.valid">*</span>
+      <span *ngIf="!form.controls.tripType.valid">*</span>
     </div>
 
-    <div *ngIf="form | getFormControl: 'usePoints' as usePoints">
+    <div>
       <label>
-        <input type="checkbox" [formControl]="usePoints" />
+        <input type="checkbox" [formControl]="form.controls.usePoints" />
         <span>Use True Blue Points</span>
       </label>
     </div>
 
-    <div *ngIf="form | getFormControl: 'promoCode' as promoCode">
+    <div>
       <label>
         <span>Promo Code </span>
-        <input formControlName="promoCode" />
+        <input [formControl]="form.controls.promoCode" />
       </label>
-      <span *ngIf="showValidationErrors && !promoCode.valid">*</span>
+      <span *ngIf="showValidationErrors && !form.controls.promoCode.valid"
+        >*</span
+      >
     </div>
 
-    <div *ngIf="form | getFormControl: 'passengers' as passengers">
+    <div>
       <app-passengers
         [showValidationErrors]="showValidationErrors"
-        [formControl]="passengers"
+        [formControl]="form.controls.passengers"
       ></app-passengers>
     </div>
 
-    <div *ngIf="form | getFormControl: 'cities' as cities">
+    <div>
       <app-city-pair
-        [formControl]="cities"
+        [formControl]="form.controls.cities"
         [showValidationErrors]="showValidationErrors"
       ></app-city-pair>
     </div>
-    <div *ngIf="form | getFormControl: 'departureDate' as departureDate">
-      <input type="date" [formControl]="departureDate" />
+    <div>
+      <input type="date" [formControl]="form.controls.departureDate" />
     </div>
-    <div *ngIf="form | getFormControl: 'returnDate' as returnDate">
-      <input type="date" [formControl]="returnDate" />
+    <div>
+      <input type="date" [formControl]="form.controls.returnDate" />
     </div>
   </div>
 </form>
